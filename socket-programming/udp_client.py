@@ -12,7 +12,8 @@ Make sure udp_server.py is already running first.
 
 import socket
 
-HOST = "127.0.0.1"  # server address
+##HOST = "127.0.0.1"  # server address
+HOST = "192.168.1.2."
 PORT = 65433        # must match udp_server.py
 BUFFER_SIZE = 1024
 TIMEOUT = 2         # seconds to wait for a reply before giving up

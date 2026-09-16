@@ -1,0 +1,7 @@
+ID:e9964da8-3229-45e5-aa4d-9135defd0042
+Sent: e9964da8-3229-45e5-aa4d-9135defd0042, 0
+Recieved: 731b8857-f090-402f-9fbe-80fe14ba5eb6, Flag=0, less, 0
+	Ignore Message
+Sent: e9964da8-3229-45e5-aa4d-9135defd0042, 1
+Recieved: e9964da8-3229-45e5-aa4d-9135defd0042, Flag=0, same, 1
+Leader is decided to:e9964da8-3229-45e5-aa4d-9135defd0042
