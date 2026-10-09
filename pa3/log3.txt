@@ -1,3 +1,0 @@
-[22:23:29.706703] Sent peer_request to BROADCAST: {'type': 'peer_request', 'node_id': '9ed6f709'}
-[22:23:29.711963] Receieved peer_ack from ('192.168.56.1', 54321): {'type': 'peer_ack', 'node_id': 'd420da67', 'tcp_port': 12345}
-[22:23:29.714268] Receieved peer_ack from ('192.168.56.1', 54321): {'type': 'peer_ack', 'node_id': '054b5719', 'tcp_port': 12345}
