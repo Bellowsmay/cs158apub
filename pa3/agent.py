@@ -28,7 +28,7 @@ def send_peer_request():
         print(f"[discovery] broadcasting peer_request")
         log_msg(msg, True, "BROADCAST")
 
-        #sock.settimeout(3)
+        sock.settimeout(3)
         while True:
             try:
                 response, addr = sock.recvfrom(4096)
