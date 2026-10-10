@@ -14,10 +14,10 @@ On startup a node broadcasts a `peer_request` to `255.255.255.255:54321`, then c
 
 Each UDP message is one JSON object (UTF-8). No length prefix is needed since a UDP datagram is exactly one message. The `type` field identifies it.
 
-| type | fields |
-|---|---|
-| `peer_request` | `node_id` |
-| `peer_ack` | `node_id`, `tcp_port` |
+| type           | fields                |
+| -------------- | --------------------- |
+| `peer_request` | `node_id`             |
+| `peer_ack`     | `node_id`, `tcp_port` |
 
 ```json
 {"type": "peer_request", "node_id": "5b1dc793"}
@@ -25,3 +25,27 @@ Each UDP message is one JSON object (UTF-8). No length prefix is needed since a 
 ```
 
 The peer's IP is taken from the UDP packet's source address. `node_id` is a random 8-char hex string, used to ignore a node's own broadcasts.
+
+## Peer Connection (TCP)
+
+The node that sent the `peer_request` is the TCP client: after a `peer_ack`, it connects to the ack's source IP and `tcp_port`. The node that sent the ack is the TCP server and accepts on its `tcp_port`.
+
+Each node keeps a peer table mapping `node_id` to that peer's socket. Before connecting, and again when registering a new connection, a node checks this table and closes the new connection if the peer is already connected, so each pair has exactly one connection.
+
+The first message on a new TCP connection, in both directions, is a `file_list`. Its `node_id` field is how the accepting side learns who connected; a connection whose first message is not a `file_list` with a `node_id` is closed.
+
+## TCP Message Format
+
+Every TCP message is one JSON object (UTF-8) followed by a newline (`\n`). The receiver reads bytes into a buffer until it contains a `\n`, takes everything before it as one message, and keeps the remainder for the next message. This handles a single `recv` returning part of a message or several messages at once.
+
+| type        | fields             |
+| ----------- | ------------------ |
+| `file_list` | `node_id`, `files` |
+
+```json
+{
+  "type": "file_list",
+  "node_id": "5b1dc793",
+  "files": ["alice.txt", "photo.jpg"]
+}
+```
