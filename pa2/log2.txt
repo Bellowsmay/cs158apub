@@ -1,0 +1,7 @@
+ID:dd855aad-e418-4f47-ba35-c6720e2ea282
+Sent: dd855aad-e418-4f47-ba35-c6720e2ea282, 0
+Recieved: 81bac34b-7db4-4081-b791-d61943238322, Flag=0, less, 0
+	Ignore Message
+Sent: dd855aad-e418-4f47-ba35-c6720e2ea282, 1
+Recieved: dd855aad-e418-4f47-ba35-c6720e2ea282, Flag=0, same, 1
+Leader is decided to:dd855aad-e418-4f47-ba35-c6720e2ea282

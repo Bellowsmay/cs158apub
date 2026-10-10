@@ -1,5 +1,5 @@
 import uuid, socket, threading, time, json
-BUFFER_SIZE = 1024 #size of data to send
+BUFFER_SIZE = 59 #size of data to send
 myUUID = uuid.uuid4() #create my process's uuid
 leader_id: uuid.UUID
 clientSocket = None
@@ -27,7 +27,9 @@ def serverListen():
     serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #Create the socket
     serverSocket.bind(serverAddress) #Claim the IP and Port from the config file (should be first line)
     serverSocket.listen(1) #listen for client connections
+    print('waiting for connection')
     conn, addr = serverSocket.accept() #accept the client connection and store the socket
+    print('conn set')
 
 #method to thread for the client
 def clientConnect():
