@@ -5,6 +5,8 @@ import threading
 import uuid
 import time
 import os 
+import base64
+import shutil
 from datetime import datetime
 
 UDP_PORT = 54321
@@ -12,11 +14,14 @@ BROADCAST_ADDR = "255.255.255.255" # broadcast address for peer discovery
 NODE_ID = uuid.uuid4().hex[:8]    # unique per process, used to ignore own broadcasts
 TCP_PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 12345 # specific TCP port when testing on the same machine
 SHARED_DIR = "shared"
+DOWNLOAD_DIR = "downloads"
 peers = {}        # node_id: socket
 peer_files = {}   # node_id: list of files that node should have
+pending_requests = set() #Pending file data requests. Used to prevent repeated prompts
 peers_lock = threading.Lock() # prevent threads from reading/updating peer list at same time 
 send_lock = threading.Lock()  # prevent from sending at the same time so that bytes arent mixed together
 log_lock = threading.Lock()   # many threads write to the log, keep lines from interleaving
+file_available = threading.Event() #Signal when there is a file in an incoming file list that you don't have
 
 
 def log_msg(msg, sent, addr):
@@ -93,6 +98,45 @@ def send_file_list():
                 print(f"[files] Failed to send file list to {peer_id}")
 
         time.sleep(10)
+
+#prompt the user for which file to request then sent the request
+def send_data_request(peer_id, sock):
+    requested_file = input(f"WHICH FILE WOULD YOU LIKE TO REQUEST FROM {peer_id}? (Enter 'none' for none)")
+    if(requested_file == "none"): return
+    msg =  {"type": "data_request", "node_id": NODE_ID, "file_name": requested_file}
+    pending_requests.add((peer_id, requested_file))
+    send_msg(sock, msg);
+
+#Send the file's data to the peer for them to reconstruct
+def send_file_data(peer_id, sock, file_name):
+    file_path = os.path.join(SHARED_DIR, file_name) #Get the file path
+    if os.path.isfile(file_path):
+        with open(file_path, "rb") as f:
+            filedata = f.read()
+        encoded_data = base64.b64encode(filedata).decode("ascii")
+        msg = { "type": "file_data", "node_id": NODE_ID, "file_name": file_name, "file": encoded_data}
+    else:
+        msg = { "type": "error", "node_id": NODE_ID, "error_message": f"{peer_id} no longer has {file_name}"}
+    send_msg(sock, msg);
+
+#Runs in a separate thread to prevent repeated prompts. Activated when file_available is
+#Asks user for which file to request.
+def user_input_loop():
+    while True:
+        file_available.wait()
+        file_available.clear()
+        with peers_lock:
+            peer_socks = list(peers.items())
+        for peer_id, sock in peer_socks:
+            files = peer_files.get(peer_id, [])
+            missing_files = [
+                f for f in files
+                if not os.path.isfile(os.path.join(SHARED_DIR, f))
+                and (peer_id, f) not in pending_requests
+            ]
+            if missing_files:
+                print(f"Available files from {peer_id}: {missing_files}")
+                send_data_request(peer_id, sock)
  
 def handle_message(peer_id, sock, msg):
     msg_type = msg.get("type")
@@ -102,6 +146,41 @@ def handle_message(peer_id, sock, msg):
             if peer_id in peer_files:
                 peer_files[peer_id] = files  
         print(f"[files] {peer_id} has {files}")
+        #prompt/send for data request if they have a file we do not have
+        for file in files:
+            file_path = os.path.join(SHARED_DIR, file)
+            if not os.path.isfile(file_path):
+                file_available.set()
+                break #break if we find 1 file we don't have
+    elif msg_type == "data_request":
+        send_file_data(peer_id, sock, msg.get("file_name"))
+    elif msg_type == "file_data":
+        os.makedirs(DOWNLOAD_DIR, exist_ok=True)
+        filename = msg["file_name"]
+        # Decode Base64 back into bytes
+        filedata = base64.b64decode(msg["file"], validate=True) #validate just to be safe that the file_name isn't a directory
+        # Recreate the file if it doesn't exist already
+        download = os.path.join(DOWNLOAD_DIR, filename)
+        shared = os.path.join(SHARED_DIR, filename)
+        try:
+            #download and recreate file
+            with open(download, "xb") as f:
+                f.write(filedata)
+            print(f"Downloaded {filename}")
+            #remove file from pending requests
+            pending_requests.discard((msg["peer_id"], filename))
+            #copy the file 
+            with open(download, "rb") as src:
+                with open(shared, "xb") as dst:
+                    shutil.copyfileobj(src, dst)
+            print(f"Transfered {filename} to shared folder")
+        except FileExistsError:
+            print(f"Skipped {filename}. Already exists in downloads")
+        except FileNotFoundError:
+            print(f"{filename} was not found in downloads")
+    elif msg_type == "error":
+        error_msg = msg.get("error_message")
+        print(f"ERROR: {error_msg}")
     else:
         # later: need to handle the other msgs
         print(f"[tcp] from {peer_id}: {msg}")
@@ -256,5 +335,6 @@ start_tcp_server()
 threading.Thread(target=udp_listener, daemon=True).start()
 threading.Thread(target=send_file_list, daemon=True).start()
 send_peer_request()
+threading.Thread(target=user_input_loop, daemon=True).start()
 while True:        
     time.sleep(1) # keep the main thread running (temporarily until final logic implemented)

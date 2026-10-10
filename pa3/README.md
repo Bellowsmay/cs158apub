@@ -38,9 +38,12 @@ The first message on a new TCP connection, in both directions, is a `file_list`.
 
 Every TCP message is one JSON object (UTF-8) followed by a newline (`\n`). The receiver reads bytes into a buffer until it contains a `\n`, takes everything before it as one message, and keeps the remainder for the next message. This handles a single `recv` returning part of a message or several messages at once.
 
-| type        | fields             |
-| ----------- | ------------------ |
-| `file_list` | `node_id`, `files` |
+| type           | fields                                |
+| -------------- | --------------------------------------|
+| `file_list`    | `node_id`, `files`                    |
+| `data_request` | `node_id`, `file_name`                |
+| `file_data`    | `node_id`, `file_name`, `file`        |
+| `error`        | `node_id`, `error_message`            |
 
 ```json
 {
