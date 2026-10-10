@@ -38,6 +38,7 @@ def sock_addr(sock):
     except OSError: # socket already disconnected
         return "unknown"
 
+#Map peer_id and correspodning tcp socket if not already in map
 def add_peer(peer_id, sock):
     with peers_lock:
         if peer_id in peers:
@@ -78,6 +79,20 @@ def make_file_list():
     os.makedirs(SHARED_DIR, exist_ok=True)
     files = sorted(f for f in os.listdir(SHARED_DIR) if os.path.isfile(os.path.join(SHARED_DIR, f))) # return all files in shared dir, sorted
     return {"type": "file_list", "node_id": NODE_ID, "files": files}
+
+#Send every connected peer our file list every 10 seconds (in a separate thread)
+def send_file_list():
+    while True:
+        with peers_lock:#lock so the peer list isn't updated while we loop
+            connected_peers = list(peers.items())
+
+        for peer_id, sock in connected_peers:
+            try:
+                send_msg(sock, make_file_list())
+            except OSError:
+                print(f"[files] Failed to send file list to {peer_id}")
+
+        time.sleep(10)
  
 def handle_message(peer_id, sock, msg):
     msg_type = msg.get("type")
@@ -138,7 +153,7 @@ def setup_incoming_peer(conn, addr):
         pass
     listen_to_peer(peer_id, conn, buf) # thread loops to continue handling and receiving msg
     
-# broadcast peer_request and collect peer_acks on start
+# UDP broadcast peer_request and collect peer_acks on start
 def send_peer_request():
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1) # enable broadcasting on this UDP socket
@@ -239,6 +254,7 @@ print(f"My id={NODE_ID}, tcp_port={TCP_PORT}")
 start_tcp_server()
 # listener first, so we're ready before we announce ourselves
 threading.Thread(target=udp_listener, daemon=True).start()
+threading.Thread(target=send_file_list, daemon=True).start()
 send_peer_request()
 while True:        
     time.sleep(1) # keep the main thread running (temporarily until final logic implemented)

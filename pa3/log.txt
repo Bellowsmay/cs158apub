@@ -1,0 +1,15 @@
+[20:58:42.431256] Sent peer_request to BROADCAST: {'type': 'peer_request', 'node_id': '8ce01327'}
+[20:59:45.086285] Sent peer_request to BROADCAST: {'type': 'peer_request', 'node_id': 'aec47822'}
+[21:59:36.495662] Sent peer_request to BROADCAST: {'type': 'peer_request', 'node_id': '03e3dcbf'}
+[21:59:38.340578] Receieved peer_request from ('192.168.56.1', 62033): {'type': 'peer_request', 'node_id': '1e0dfe3a'}
+[21:59:38.342986] Sent peer_ack to ('192.168.56.1', 62033): {'type': 'peer_ack', 'node_id': '03e3dcbf', 'tcp_port': 6001}
+[21:59:38.353387] Receieved file_list from ('192.168.56.1', 52411): {'type': 'file_list', 'node_id': '1e0dfe3a', 'files': []}
+[21:59:38.356370] Peer added: 1e0dfe3a at ('192.168.56.1', 52411)
+[21:59:38.360746] Sent file_list to ('192.168.56.1', 52411): {'type': 'file_list', 'node_id': '03e3dcbf', 'files': []}
+[21:59:40.026966] Receieved peer_request from ('192.168.56.1', 55677): {'type': 'peer_request', 'node_id': 'a7910e02'}
+[21:59:40.033888] Sent peer_ack to ('192.168.56.1', 55677): {'type': 'peer_ack', 'node_id': '03e3dcbf', 'tcp_port': 6001}
+[21:59:40.042495] Receieved file_list from ('192.168.56.1', 52420): {'type': 'file_list', 'node_id': 'a7910e02', 'files': []}
+[21:59:40.045171] Peer added: a7910e02 at ('192.168.56.1', 52420)
+[21:59:40.049398] Sent file_list to ('192.168.56.1', 52420): {'type': 'file_list', 'node_id': '03e3dcbf', 'files': []}
+[22:20:29.857099] Peer removed: a7910e02 at ('192.168.56.1', 52420)
+[22:20:31.000568] Peer removed: 1e0dfe3a at ('192.168.56.1', 52411)

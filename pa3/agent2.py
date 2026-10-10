@@ -38,6 +38,7 @@ def sock_addr(sock):
     except OSError: # socket already disconnected
         return "unknown"
 
+#Map peer_id and correspodning tcp socket if not already in map
 def add_peer(peer_id, sock):
     with peers_lock:
         if peer_id in peers:
