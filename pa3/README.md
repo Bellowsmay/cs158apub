@@ -38,17 +38,37 @@ The first message on a new TCP connection, in both directions, is a `file_list`.
 
 Every TCP message is one JSON object (UTF-8) followed by a newline (`\n`). The receiver reads bytes into a buffer until it contains a `\n`, takes everything before it as one message, and keeps the remainder for the next message. This handles a single `recv` returning part of a message or several messages at once.
 
-| type           | fields                                |
-| -------------- | --------------------------------------|
-| `file_list`    | `node_id`, `files`                    |
-| `data_request` | `node_id`, `file_name`                |
-| `file_data`    | `node_id`, `file_name`, `file`        |
-| `error`        | `node_id`, `error_message`            |
+| type           | fields                                     |
+| -------------- | -------------------------------------------|
+| `file_list`    | `node_id`, `files`                         |
+| `data_request` | `node_id`, `file_name`                     |
+| `file_data`    | `node_id`, `file_name`, `file`             |
+| `file_error`   | `node_id`, `error_message`, `file_name`    |
 
 ```json
 {
   "type": "file_list",
   "node_id": "5b1dc793",
   "files": ["alice.txt", "photo.jpg"]
+}
+
+{
+  "type": "data_request",
+  "node_id": "5b1dc793",
+  "file_name": "Project Hail Mary.txt"
+}
+
+{
+  "type": "file_data",
+  "node_id": "5b1dc793",
+  "file_name": "Project Hail Mary.txt",
+  "file": "'IldoYXQncyB0d28gcGx1cyB0d28/" //Some base64 bytestream string
+}
+
+{
+  "type": "file_error",
+  "node_id": "5b1dc793",
+  "error_message": "5c36eb78 no longer has Project Hail Mary.txt",
+  "file_name": "Project Hail Mary.txt"
 }
 ```

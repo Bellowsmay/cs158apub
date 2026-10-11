@@ -60,14 +60,19 @@ def remove_peer(peer_id, sock):
             return
         del peers[peer_id]
         del peer_files[peer_id]
-    print(f"[peers] removed {peer_id}")
+    print(f"[peers] removed {peer_id}\n")
     log_peer_change("removed", peer_id, sock_addr(sock))
 
 def send_msg(sock, msg):
-    data = json.dumps(msg).encode() + b"\n" # using \n as the delimiter , } from previous may break it
-    with send_lock:
-        sock.sendall(data)
-    log_msg(msg, True, sock_addr(sock))
+    data = json.dumps(msg).encode() + b"\n" # using \n as the delimiter , } from previous may break 
+    #Check if the connection is still up before sending
+    try:
+        with send_lock:
+            sock.sendall(data)
+        log_msg(msg, True, sock_addr(sock))
+    except (ConnectionResetError, OSError) as e:
+        print(f"[Connection Lost] Failed to send message: {e}")
+        return False
 
 def recv_msg(sock, buf):
     while b"\n" not in buf:   # continue reading if delimiter not found
@@ -101,7 +106,7 @@ def send_file_list():
 
 #prompt the user for which file to request then sent the request
 def send_data_request(peer_id, sock):
-    requested_file = input(f"WHICH FILE WOULD YOU LIKE TO REQUEST FROM {peer_id}? (Enter 'none' for none)")
+    requested_file = input(f"WHICH FILE WOULD YOU LIKE TO REQUEST FROM {peer_id}? (Enter 'none' for none)\n")
     if(requested_file == "none"): return
     msg =  {"type": "data_request", "node_id": NODE_ID, "file_name": requested_file}
     pending_requests.add((peer_id, requested_file))
@@ -145,7 +150,7 @@ def handle_message(peer_id, sock, msg):
         with peers_lock:                           
             if peer_id in peer_files:
                 peer_files[peer_id] = files  
-        print(f"[files] {peer_id} has {files}")
+        #print(f"[files] {peer_id} has {files}")
         #prompt/send for data request if they have a file we do not have
         for file in files:
             file_path = os.path.join(SHARED_DIR, file)
@@ -166,9 +171,9 @@ def handle_message(peer_id, sock, msg):
             #download and recreate file
             with open(download, "xb") as f:
                 f.write(filedata)
-            print(f"Downloaded {filename}")
+            print(f"Downloaded {filename}\n")
             #remove file from pending requests
-            pending_requests.discard((msg["peer_id"], filename))
+            pending_requests.discard((msg["node_id"], filename))
             #copy the file 
             with open(download, "rb") as src:
                 with open(shared, "xb") as dst:
@@ -178,9 +183,10 @@ def handle_message(peer_id, sock, msg):
             print(f"Skipped {filename}. Already exists in downloads")
         except FileNotFoundError:
             print(f"{filename} was not found in downloads")
-    elif msg_type == "error":
+    elif msg_type == "file_error":
         error_msg = msg.get("error_message")
         print(f"ERROR: {error_msg}")
+        pending_requests.discard((msg["node_id"], msg["file_name"]))
     else:
         # later: need to handle the other msgs
         print(f"[tcp] from {peer_id}: {msg}")
@@ -240,7 +246,7 @@ def send_peer_request():
         msg = {"type": "peer_request", "node_id": NODE_ID}# protocol message for peer discovery
         sock.sendto(json.dumps(msg).encode(), (BROADCAST_ADDR, UDP_PORT))
         #log that we sent peer request
-        print(f"[discovery] broadcasting peer_request")
+        print(f"[discovery] broadcasting peer_request\n")
         log_msg(msg, True, "BROADCAST")
 
         sock.settimeout(3)
@@ -296,7 +302,7 @@ def udp_listener():
     if hasattr(socket, "SO_REUSEPORT"):      # not on Windows
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
     sock.bind(("", UDP_PORT))
-    print(f"[listener] listening on UDP {UDP_PORT}")
+    print(f"[listener] listening on UDP {UDP_PORT}\n")
 
     while True:
         data, addr = sock.recvfrom(4096)
@@ -325,7 +331,7 @@ def start_tcp_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(("", TCP_PORT)) # listen on any network
     server.listen()
-    print(f"[tcp] listening on TCP {TCP_PORT}")
+    print(f"[tcp] listening on TCP {TCP_PORT}\n")
     threading.Thread(target=tcp_accept_loop, args=(server,), daemon=True).start() # start accepting messages
 
 
