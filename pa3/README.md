@@ -3,10 +3,23 @@
 ## How to Run
 
 ```
+cd pa3
 python3 agent.py [tcp_port]
 ```
 
 `tcp_port` is optional (default 12345). To run several nodes on one machine, give each its own port (`6001`, `6002`, ...). Test on a home router or hotspot, not campus Wi-Fi.
+
+## How to - Transfering Files
+1. To start a file transfer, make sure the nodes have files to transfer in the corresponding shared directories.
+2. Delete any and all download folders. They will be created by the program, but not emptied by it.
+3. Upon receiving a file list from a peer node, the current node will be prompted to enter the name of a singular file to receive from that list. Users will ONLY receive the prompt if they DO NOT HAVE a file in that list. If they have all the files, they will not be prompted.
+- NOTE: Other printed statements may appear after the user is prompted. THIS IS FINE. Continue to enter the file name like normal. 
+![alt text](<Prompt Example.png>)
+4. Repeat step 2 until all prompts are answered, all files are recived, or all other peer nodes are terminated.
+
+Technology Info:
+For file data, the message format is JSON, but the file data field is encoded into a base64 byte string. We chose this method for simplicity. Otherwise we would need to specify byte length at the beginning of the message.
+Messages are delimited with \n.
 
 ## Peer Discovery (UDP, port 54321)
 
@@ -46,25 +59,30 @@ Every TCP message is one JSON object (UTF-8) followed by a newline (`\n`). The r
 | `file_error`   | `node_id`, `error_message`, `file_name`    |
 
 ```json
+Used to advertise files to peers
 {
   "type": "file_list",
   "node_id": "5b1dc793",
   "files": ["alice.txt", "photo.jpg"]
 }
 
+Used to request a file from a peer
 {
   "type": "data_request",
   "node_id": "5b1dc793",
   "file_name": "Project Hail Mary.txt"
 }
 
+Used to send actual file contents to peers
+Note: For file data, the message format is JSON, but the file data field is encoded into a base64 byte string.
 {
   "type": "file_data",
   "node_id": "5b1dc793",
   "file_name": "Project Hail Mary.txt",
-  "file": "'IldoYXQncyB0d28gcGx1cyB0d28/" //Some base64 bytestream string
+  "file": "'IldoYXQncyB0d28gcGx1cyB0d28/" 
 }
 
+Used to explain why file could not be sent
 {
   "type": "file_error",
   "node_id": "5b1dc793",

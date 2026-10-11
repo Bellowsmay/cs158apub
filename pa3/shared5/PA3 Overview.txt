@@ -1,0 +1,5 @@
+P2P Data Sharing Agent
+Overview
+
+    You will build a peer-to-peer file sharing agent. Every node is both a server and a client. There is no central directory or tracker.
+    A node discovers peers with UDP broadcast, maintains TCP connections to the peers it finds, advertises which files it has, and serves those files on request.

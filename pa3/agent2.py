@@ -15,6 +15,7 @@ NODE_ID = uuid.uuid4().hex[:8]    # unique per process, used to ignore own broad
 TCP_PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 12345 # specific TCP port when testing on the same machine
 SHARED_DIR = "shared2"
 DOWNLOAD_DIR = "downloads2"
+LOG = "log2.txt"
 peers = {}        # node_id: socket
 peer_files = {}   # node_id: list of files that node should have
 pending_requests = set() #Pending file data requests. Used to prevent repeated prompts
@@ -23,9 +24,9 @@ send_lock = threading.Lock()  # prevent from sending at the same time so that by
 log_lock = threading.Lock()   # many threads write to the log, keep lines from interleaving
 file_available = threading.Event() #Signal when there is a file in an incoming file list that you don't have
 
-
+#Log any message to the log file
 def log_msg(msg, sent, addr):
-    with log_lock, open("log2.txt", "a") as log:
+    with log_lock, open(LOG, "a") as log:
         if(sent):
             log.write(f"[{datetime.now():%H:%M:%S.%f}] Sent {msg.get("type")} to {addr}: {msg}\n")
         else:
@@ -33,7 +34,7 @@ def log_msg(msg, sent, addr):
 
 # log peer table changes (added / removed)
 def log_peer_change(action, peer_id, addr):
-    with log_lock, open("log2.txt", "a") as log:
+    with log_lock, open(LOG, "a") as log:
         log.write(f"[{datetime.now():%H:%M:%S.%f}] Peer {action}: {peer_id} at {addr}\n")
 
 # address of the other end of a TCP socket, for logging
@@ -54,6 +55,7 @@ def add_peer(peer_id, sock):
     log_peer_change("added", peer_id, sock_addr(sock))
     return True
 
+#remove a peer and it's socket from the peer list
 def remove_peer(peer_id, sock):
     with peers_lock:
         if peers.get(peer_id) is not sock: # already removed (or belongs to a different connection)
@@ -63,6 +65,7 @@ def remove_peer(peer_id, sock):
     print(f"[peers] removed {peer_id}\n")
     log_peer_change("removed", peer_id, sock_addr(sock))
 
+#send and log a message
 def send_msg(sock, msg):
     data = json.dumps(msg).encode() + b"\n" # using \n as the delimiter , } from previous may break 
     #Check if the connection is still up before sending
@@ -70,10 +73,11 @@ def send_msg(sock, msg):
         with send_lock:
             sock.sendall(data)
         log_msg(msg, True, sock_addr(sock))
-    except (ConnectionResetError, OSError) as e:
+    except (ConnectionResetError, OSError) as e: #display error if we cannot send to the socket
         print(f"[Connection Lost] Failed to send message: {e}")
         return False
 
+#receive and log any message we receive
 def recv_msg(sock, buf):
     while b"\n" not in buf:   # continue reading if delimiter not found
         chunk = sock.recv(4096)
@@ -84,7 +88,8 @@ def recv_msg(sock, buf):
     msg = json.loads(line)
     log_msg(msg, False, sock_addr(sock))
     return msg, buf
- 
+
+#make the list of files in our shared directory to be advertised
 def make_file_list():
     os.makedirs(SHARED_DIR, exist_ok=True)
     files = sorted(f for f in os.listdir(SHARED_DIR) if os.path.isfile(os.path.join(SHARED_DIR, f))) # return all files in shared dir, sorted
@@ -100,13 +105,13 @@ def send_file_list():
             try:
                 send_msg(sock, make_file_list())
             except OSError:
-                print(f"[files] Failed to send file list to {peer_id}")
+                print(f"[file list] Failed to send file list to {peer_id}")
 
         time.sleep(10)
 
-#prompt the user for which file to request then sent the request
+#prompt the user for which file to request then sent the request.
 def send_data_request(peer_id, sock):
-    requested_file = input(f"WHICH FILE WOULD YOU LIKE TO REQUEST FROM {peer_id}? (Enter 'none' for none)\n")
+    requested_file = input(f"-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM {peer_id}? (Enter 'none' for none)-------------\n")
     if(requested_file == "none"): return
     msg =  {"type": "data_request", "node_id": NODE_ID, "file_name": requested_file}
     pending_requests.add((peer_id, requested_file))
@@ -117,14 +122,15 @@ def send_file_data(peer_id, sock, file_name):
     file_path = os.path.join(SHARED_DIR, file_name) #Get the file path
     if os.path.isfile(file_path):
         with open(file_path, "rb") as f:
-            filedata = f.read()
-        encoded_data = base64.b64encode(filedata).decode("ascii")
+            filedata = f.read() #read the file to send
+        encoded_data = base64.b64encode(filedata).decode("ascii") #Encode the file contents to base64
         msg = { "type": "file_data", "node_id": NODE_ID, "file_name": file_name, "file": encoded_data}
     else:
+        #send error if we don't have the file
         msg = { "type": "error", "node_id": NODE_ID, "error_message": f"{peer_id} no longer has {file_name}"}
     send_msg(sock, msg);
 
-#Runs in a separate thread to prevent repeated prompts. Activated when file_available is
+#Runs in a separate thread to prevent repeated prompts. Activated when file_available is activated.
 #Asks user for which file to request.
 def user_input_loop():
     while True:
@@ -134,31 +140,36 @@ def user_input_loop():
             peer_socks = list(peers.items())
         for peer_id, sock in peer_socks:
             files = peer_files.get(peer_id, [])
+            #See which files we're missing from the peer
             missing_files = [
                 f for f in files
                 if not os.path.isfile(os.path.join(SHARED_DIR, f))
                 and (peer_id, f) not in pending_requests
             ]
+            #Prompt user for file if we find a file we don't have
             if missing_files:
-                print(f"Available files from {peer_id}: {missing_files}")
+                print(f"[file list] Available files from {peer_id}: {missing_files}")
                 send_data_request(peer_id, sock)
- 
+
+#Handles any message types we recive from the TCP layer
 def handle_message(peer_id, sock, msg):
     msg_type = msg.get("type")
+    #Handle file list type by prompting user when we find a file we don't have
     if msg_type == "file_list": 
         files = msg.get("files", [])
         with peers_lock:                           
             if peer_id in peer_files:
                 peer_files[peer_id] = files  
-        #print(f"[files] {peer_id} has {files}")
         #prompt/send for data request if they have a file we do not have
         for file in files:
             file_path = os.path.join(SHARED_DIR, file)
             if not os.path.isfile(file_path):
                 file_available.set()
                 break #break if we find 1 file we don't have
+    #Handle a data request by sending the file
     elif msg_type == "data_request":
         send_file_data(peer_id, sock, msg.get("file_name"))
+    #Handle incoming file data by reconstructing the file if we don't have it already
     elif msg_type == "file_data":
         os.makedirs(DOWNLOAD_DIR, exist_ok=True)
         filename = msg["file_name"]
@@ -171,24 +182,24 @@ def handle_message(peer_id, sock, msg):
             #download and recreate file
             with open(download, "xb") as f:
                 f.write(filedata)
-            print(f"Downloaded {filename}\n")
             #remove file from pending requests
             pending_requests.discard((msg["node_id"], filename))
-            #copy the file 
+            #copy the file to shared
             with open(download, "rb") as src:
                 with open(shared, "xb") as dst:
                     shutil.copyfileobj(src, dst)
-            print(f"Transfered {filename} to shared folder")
+            print(f"[Transfer] {filename} to shared folder")
         except FileExistsError:
-            print(f"Skipped {filename}. Already exists in downloads")
+            print(f"[Transfer] Skipped {filename}. Already exists in downloads")
         except FileNotFoundError:
             print(f"{filename} was not found in downloads")
+    #Handle a file error by telling the requester
     elif msg_type == "file_error":
         error_msg = msg.get("error_message")
         print(f"ERROR: {error_msg}")
         pending_requests.discard((msg["node_id"], msg["file_name"]))
     else:
-        # later: need to handle the other msgs
+        #Default handling
         print(f"[tcp] from {peer_id}: {msg}")
 
 # peer will continue looping and wait  for request from other peer
@@ -205,13 +216,13 @@ def listen_to_peer(peer_id, sock, buf=b""):
         remove_peer(peer_id, sock)
         sock.close()
 
- 
+#Repeatedly accept incoming connections
 def tcp_accept_loop(server):
     while True:
         conn, addr = server.accept()
         threading.Thread(target=setup_incoming_peer, args=(conn, addr), daemon=True).start()
  
-
+#Set up peer socket and send intro messages
 def setup_incoming_peer(conn, addr):
     try:
         intro_msg, buf = recv_msg(conn, b"")
@@ -295,7 +306,7 @@ def send_peer_request():
 
                     
 
-
+#Listen for UDP connection requests
 def udp_listener():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -327,6 +338,7 @@ def udp_listener():
         print(f"[listener] sent peer_ack to {addr}, node_id={ack['node_id']}")
         log_msg(ack, True, addr)
 
+#Start the TCP server between two peers
 def start_tcp_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(("", TCP_PORT)) # listen on any network
@@ -334,7 +346,7 @@ def start_tcp_server():
     print(f"[tcp] listening on TCP {TCP_PORT}\n")
     threading.Thread(target=tcp_accept_loop, args=(server,), daemon=True).start() # start accepting messages
 
-
+#MAIN CODE
 print(f"My id={NODE_ID}, tcp_port={TCP_PORT}")
 start_tcp_server()
 # listener first, so we're ready before we announce ourselves

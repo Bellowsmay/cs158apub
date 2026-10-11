@@ -1,0 +1,187 @@
+[02:46:49.657260] Sent peer_request to BROADCAST: {'type': 'peer_request', 'node_id': '99cace08'}
+[02:46:49.660037] Receieved peer_ack from ('192.168.56.1', 54321): {'type': 'peer_ack', 'node_id': 'd708dc11', 'tcp_port': 6002}
+[02:46:49.666797] Peer added: d708dc11 at ('192.168.56.1', 6002)
+[02:46:49.670847] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:46:49.674807] Receieved peer_ack from ('192.168.56.1', 54321): {'type': 'peer_ack', 'node_id': 'a8975c90', 'tcp_port': 6001}
+[02:46:49.678878] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['Project Hail Mary.txt']}
+[02:46:49.681591] Peer added: a8975c90 at ('192.168.56.1', 6001)
+[02:46:49.689144] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:46:49.691401] Receieved peer_ack from ('192.168.56.1', 54321): {'type': 'peer_ack', 'node_id': 'b2103617', 'tcp_port': 6004}
+[02:46:49.694887] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt']}
+[02:46:49.698355] Peer added: b2103617 at ('192.168.56.1', 6004)
+[02:46:49.704096] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:46:49.706479] Receieved peer_ack from ('192.168.56.1', 54321): {'type': 'peer_ack', 'node_id': '97c4523f', 'tcp_port': 6003}
+[02:46:49.716999] Peer added: 97c4523f at ('192.168.56.1', 6003)
+[02:46:49.719706] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:46:49.723322] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:46:49.729602] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt']}
+[02:46:55.060306] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt']}
+[02:46:55.990273] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['Project Hail Mary.txt']}
+[02:46:57.801408] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt']}
+[02:46:58.835114] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:46:59.647485] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:46:59.662213] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:46:59.672596] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:46:59.681411] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:05.124551] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt']}
+[02:47:06.030903] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['Project Hail Mary.txt']}
+[02:47:07.844841] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt']}
+[02:47:08.864352] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:47:09.695895] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:09.709960] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:09.723282] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:09.736824] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:15.173237] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Project Hail Mary.txt']}
+[02:47:16.081416] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['Project Hail Mary.txt']}
+[02:47:17.907463] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt']}
+[02:47:18.915780] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:47:19.747269] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:19.751855] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:19.757475] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:19.763097] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:23.754703] Receieved data_request from ('192.168.56.1', 6001): {'type': 'data_request', 'node_id': 'a8975c90', 'file_name': 'PA3 Overview.txt'}
+[02:47:23.760367] Sent file_data to ('192.168.56.1', 6001): {'type': 'file_data', 'node_id': '99cace08', 'file_name': 'PA3 Overview.txt', 'file': 'UDJQIERhdGEgU2hhcmluZyBBZ2VudA0KT3ZlcnZpZXcNCg0KICAgIFlvdSB3aWxsIGJ1aWxkIGEgcGVlci10by1wZWVyIGZpbGUgc2hhcmluZyBhZ2VudC4gRXZlcnkgbm9kZSBpcyBib3RoIGEgc2VydmVyIGFuZCBhIGNsaWVudC4gVGhlcmUgaXMgbm8gY2VudHJhbCBkaXJlY3Rvcnkgb3IgdHJhY2tlci4NCiAgICBBIG5vZGUgZGlzY292ZXJzIHBlZXJzIHdpdGggVURQIGJyb2FkY2FzdCwgbWFpbnRhaW5zIFRDUCBjb25uZWN0aW9ucyB0byB0aGUgcGVlcnMgaXQgZmluZHMsIGFkdmVydGlzZXMgd2hpY2ggZmlsZXMgaXQgaGFzLCBhbmQgc2VydmVzIHRob3NlIGZpbGVzIG9uIHJlcXVlc3QuDQo='}
+[02:47:25.195853] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:47:26.130754] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['Project Hail Mary.txt']}
+[02:47:27.965137] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt']}
+[02:47:28.946437] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:47:29.776420] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:29.787516] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:29.803831] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:29.815853] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:35.234150] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:47:36.149447] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Project Hail Mary.txt']}
+[02:47:38.029089] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt']}
+[02:47:39.014849] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:47:39.832682] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:39.849096] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:39.864078] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:39.891593] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:45.303165] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:47:46.171406] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'Project Hail Mary.txt']}
+[02:47:48.075437] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt']}
+[02:47:49.060025] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:47:49.905879] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:49.917750] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:49.930820] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:49.944223] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:54.527557] Receieved data_request from ('192.168.56.1', 6002): {'type': 'data_request', 'node_id': 'd708dc11', 'file_name': 'PA3 Overview.txt'}
+[02:47:54.532336] Sent file_data to ('192.168.56.1', 6002): {'type': 'file_data', 'node_id': '99cace08', 'file_name': 'PA3 Overview.txt', 'file': 'UDJQIERhdGEgU2hhcmluZyBBZ2VudA0KT3ZlcnZpZXcNCg0KICAgIFlvdSB3aWxsIGJ1aWxkIGEgcGVlci10by1wZWVyIGZpbGUgc2hhcmluZyBhZ2VudC4gRXZlcnkgbm9kZSBpcyBib3RoIGEgc2VydmVyIGFuZCBhIGNsaWVudC4gVGhlcmUgaXMgbm8gY2VudHJhbCBkaXJlY3Rvcnkgb3IgdHJhY2tlci4NCiAgICBBIG5vZGUgZGlzY292ZXJzIHBlZXJzIHdpdGggVURQIGJyb2FkY2FzdCwgbWFpbnRhaW5zIFRDUCBjb25uZWN0aW9ucyB0byB0aGUgcGVlcnMgaXQgZmluZHMsIGFkdmVydGlzZXMgd2hpY2ggZmlsZXMgaXQgaGFzLCBhbmQgc2VydmVzIHRob3NlIGZpbGVzIG9uIHJlcXVlc3QuDQo='}
+[02:47:55.349048] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:47:56.238026] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:47:58.116306] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt']}
+[02:47:59.118252] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:47:59.951158] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:59.953486] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:59.959688] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:47:59.963900] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:05.401569] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:06.295752] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:08.167776] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt', 'Project Hail Mary.txt']}
+[02:48:09.163716] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:48:09.973695] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:09.980592] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:09.992520] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:10.002111] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:15.462917] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:16.357815] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:18.221988] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt', 'Ocarina.txt', 'Project Hail Mary.txt']}
+[02:48:19.216739] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:48:20.008873] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:20.017504] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:20.026583] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:20.031290] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:25.502505] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:26.415525] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:28.286463] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['Nothing Gold Can Stay.txt', 'Ocarina.txt', 'Project Hail Mary.txt']}
+[02:48:29.266425] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:48:29.930067] Receieved data_request from ('192.168.56.1', 6003): {'type': 'data_request', 'node_id': '97c4523f', 'file_name': 'PA3 Overview.txt'}
+[02:48:29.934760] Sent file_data to ('192.168.56.1', 6003): {'type': 'file_data', 'node_id': '99cace08', 'file_name': 'PA3 Overview.txt', 'file': 'UDJQIERhdGEgU2hhcmluZyBBZ2VudA0KT3ZlcnZpZXcNCg0KICAgIFlvdSB3aWxsIGJ1aWxkIGEgcGVlci10by1wZWVyIGZpbGUgc2hhcmluZyBhZ2VudC4gRXZlcnkgbm9kZSBpcyBib3RoIGEgc2VydmVyIGFuZCBhIGNsaWVudC4gVGhlcmUgaXMgbm8gY2VudHJhbCBkaXJlY3Rvcnkgb3IgdHJhY2tlci4NCiAgICBBIG5vZGUgZGlzY292ZXJzIHBlZXJzIHdpdGggVURQIGJyb2FkY2FzdCwgbWFpbnRhaW5zIFRDUCBjb25uZWN0aW9ucyB0byB0aGUgcGVlcnMgaXQgZmluZHMsIGFkdmVydGlzZXMgd2hpY2ggZmlsZXMgaXQgaGFzLCBhbmQgc2VydmVzIHRob3NlIGZpbGVzIG9uIHJlcXVlc3QuDQo='}
+[02:48:30.042881] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:30.056624] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:30.069149] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:30.085248] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:35.555359] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:36.470602] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:38.345728] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:39.306929] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['Ocarina.txt']}
+[02:48:40.092913] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:40.097030] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:40.104165] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:40.109427] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:45.609940] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:46.501604] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:48.362343] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:49.344069] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['End Poem.txt', 'Ocarina.txt']}
+[02:48:50.115810] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:50.122155] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:50.130001] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:50.135298] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:48:55.661187] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:56.548685] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:58.432114] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:48:59.395996] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt']}
+[02:49:00.145470] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:00.154387] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:00.165224] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:00.173445] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:05.671170] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:06.599425] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:08.482641] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:09.433165] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt']}
+[02:49:10.186360] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:10.200043] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:10.210944] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:10.221367] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:12.063430] Receieved data_request from ('192.168.56.1', 6004): {'type': 'data_request', 'node_id': 'b2103617', 'file_name': 'Project Hail Mary.txt'}
+[02:49:12.066199] Sent error to ('192.168.56.1', 6004): {'type': 'error', 'node_id': '99cace08', 'error_message': 'b2103617 no longer has Project Hail Mary.txt'}
+[02:49:15.729602] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:16.614311] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:18.533732] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:19.476696] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:20.232471] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:20.244804] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:20.254284] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:20.263084] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:25.755899] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:26.670688] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:28.595846] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:29.492807] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:30.270153] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:30.277918] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:30.283448] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:30.295546] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt']}
+[02:49:35.788738] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:36.730714] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:37.388796] Sent data_request to ('192.168.56.1', 6002): {'type': 'data_request', 'node_id': '99cace08', 'file_name': 'Project Hail Mary.txt'}
+[02:49:37.394332] Receieved file_data from ('192.168.56.1', 6002): {'type': 'file_data', 'node_id': 'd708dc11', 'file_name': 'Project Hail Mary.txt', 'file': 'IldoYXQncyB0d28gcGx1cyB0d28/Ig0KDQpTb21ldGhpbmcgYWJvdXQgdGhlIHF1ZXN0aW9uIGlycml0YXRlcyBtZS4gSSdtIHRpcmVkLiBJIGRyaWZ0IGJhY2sgdG8gc2xlZXAuDQoNCkEgZmV3IG1pbnV0ZXMgcGFzcywgdGhlbiBJIGhlYXIgaXQgYWdhaW4uDQoNCiJXaGF0J3MgdHdvIHBsdXMgdHdvPyINCg0KVGhlIHNvZnQsIGZlbWluaW5lIHZvaWNlIGxhY2tzIGVtb3Rpb24gYW5kIHRoZSBwcm9udW5jaWF0aW9uIGlzIGlkZW50aWNhbCB0byB0aGUgcHJldmlvdXMgdGltZSBzaGUgc2FpZCBpdC4gSXQncyBhIGNvbXB1dGVyLiBBIGNvbXB1dGVyIGlzIGhhc3NsaW5nIG1lLiBJJ20gZXZlbiBtb3JlIGlycml0YXRlZCBub3cuDQoNCiJMcm1sbiwiIEkgc2F5LiBJJ20gc3VycHJpc2VkLiBJIG1lYW50IHRvIHNheSAiTGVhdmUgbWUgYWxvbmUi4oCUYSBjb21wbGV0ZWx5IHJlYXNvbmFibGUgcmVzcG9uc2UgaW4gbXkgb3BpbmlvbuKAlMKtYnV0IEkgZmFpbGVkIHRvIHNwZWFrLg0KDQoiSW5jb3JyZWN0LCIgc2F5cyB0aGUgY29tcHV0ZXIuICJXaGF0J3MgdHdvIHBsdXMgdHdvPyINCg0KVGltZSBmb3IgYW4gZXhwZXJpbWVudC4gSSdsbCB0cnkgdG8gc2F5IGhlbGxvLg0KDQoiSGxsbGNoPyIgSSBzYXkuDQoNCiJJbmNvcnJlY3QuIFdoYXQncyB0d28gcGx1cyB0d28/Ig0KDQpXaGF0J3MgZ29pbmcgb24/IEkgd2FudCB0byBmaW5kIG91dCwgYnV0IEkgZG9uJ3QgaGF2ZSBtdWNoIHRvIHdvcmsgd2l0aC4gSSBjYW4ndCBzZWUuIEkgY2FuJ3QgaGVhciBhbnl0aGluZyBvdGhlciB0aGFuIHRoZSBjb21wdXRlci4gSSBjYW4ndCBldmVuIGZlZWwuIE5vLCB0aGF0J3Mgbm90IHRydWUuIEkgZmVlbCBzb21ldGhpbmcuIEknbSBseWluZyBkb3duLiBJJ20gb24gc29tZXRoaW5nIHNvZnQuIEEgYmVkLg0KDQpJIHRoaW5rIG15IGV5ZXMgYXJlIGNsb3NlZC4gVGhhdCdzIG5vdCBzbyBiYWQuIEFsbCBJIGhhdmUgdG8gZG8gaXMgb3BlbiB0aGVtLiBJIHRyeSwgYnV0IG5vdGhpbmcgaGFwcGVucy4='}
+[02:49:38.602645] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:39.511643] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:40.309379] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:40.324535] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:40.334388] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:40.341896] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:41.599283] Sent data_request to ('192.168.56.1', 6001): {'type': 'data_request', 'node_id': '99cace08', 'file_name': 'End Poem.txt'}
+[02:49:41.604115] Receieved file_data from ('192.168.56.1', 6001): {'type': 'file_data', 'node_id': 'a8975c90', 'file_name': 'End Poem.txt', 'file': 'IEkgc2VlIHRoZSBwbGF5ZXIgeW91IG1lYW4uDQoNClBMQVlFUk5BTUU/DQoNClllcy4gVGFrZSBjYXJlLiBJdCBoYXMgcmVhY2hlZCBhIGhpZ2hlciBsZXZlbCBub3cuIEl0IGNhbiByZWFkIG91ciB0aG91Z2h0cy4NCg0KVGhhdCBkb2Vzbid0IG1hdHRlci4gSXQgdGhpbmtzIHdlIGFyZSBwYXJ0IG9mIHRoZSBnYW1lLg0KDQpJIGxpa2UgdGhpcyBwbGF5ZXIuIEl0IHBsYXllZCB3ZWxsLiBJdCBkaWQgbm90IGdpdmUgdXAuDQoNCkl0IGlzIHJlYWRpbmcgb3VyIHRob3VnaHRzIGFzIHRob3VnaCB0aGV5IHdlcmUgd29yZHMgb24gYSBzY3JlZW4uDQoNClRoYXQgaXMgaG93IGl0IGNob29zZXMgdG8gaW1hZ2luZSBtYW55IHRoaW5ncywgd2hlbiBpdCBpcyBkZWVwIGluIHRoZSBkcmVhbSBvZiBhIGdhbWUuDQoNCldvcmRzIG1ha2UgYSB3b25kZXJmdWwgaW50ZXJmYWNlLiBWZXJ5IGZsZXhpYmxlLiBBbmQgbGVzcyB0ZXJyaWZ5aW5nIHRoYW4gc3RhcmluZyBhdCB0aGUgcmVhbGl0eSBiZWhpbmQgdGhlIHNjcmVlbi4gDQoNCg=='}
+[02:49:45.832742] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:46.786380] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:47.655681] Sent data_request to ('192.168.56.1', 6004): {'type': 'data_request', 'node_id': '99cace08', 'file_name': 'Nothing Gold Can Stay.txt'}
+[02:49:47.660391] Receieved file_data from ('192.168.56.1', 6004): {'type': 'file_data', 'node_id': 'b2103617', 'file_name': 'Nothing Gold Can Stay.txt', 'file': 'TmF0dXJl4oCZcyBmaXJzdCBncmVlbiBpcyBnb2xkLA0KSGVyIGhhcmRlc3QgaHVlIHRvIGhvbGQuDQpIZXIgZWFybHkgbGVhZuKAmXMgYSBmbG93ZXI7DQpCdXQgb25seSBzbyBhbiBob3VyLg0KVGhlbiBsZWFmIHN1YnNpZGVzIHRvIGxlYWYuDQpTbyBFZGVuIHNhbmsgdG8gZ3JpZWYsDQpTbyBkYXduIGdvZXMgZG93biB0byBkYXkuDQpOb3RoaW5nIGdvbGQgY2FuIHN0YXku'}
+[02:49:48.657239] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:49.548322] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:50.351497] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:50.361281] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:50.371976] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:50.384487] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:50.738739] Sent data_request to ('192.168.56.1', 6003): {'type': 'data_request', 'node_id': '99cace08', 'file_name': 'Ocarina.txt'}
+[02:49:50.743316] Receieved file_data from ('192.168.56.1', 6003): {'type': 'file_data', 'node_id': '97c4523f', 'file_name': 'Ocarina.txt', 'file': 'TmludGVuZG8gaGFzIGtlcHQgdGhlIE9jYXJpbmEgb2YgVGltZSByZW1ha2UgaW5jcmVkaWJseSBjbG9zZSB0byBpdHMgY2hlc3QgZm9yIHRoZSBwYXN0IHNldmVyYWwgeWVhcnMsIG9ubHkgZm9ybWFsbHkgcmV2ZWFsaW5nIHRoZSBnYW1lIHRoaXMgc3VtbWVyIGFuZCBob2xkaW5nIGdhbWVwbGF5IGZvb3RhZ2UgdW50aWwgbGVzcyB0aGFuIHR3byBtb250aHMgYmVmb3JlIGl0cyBsYXVuY2guIFN0aWxsLCBmaW5hbGx5IHNlZWluZyBhIHRydWx5IG1vZGVybml6ZWQgdmVyc2lvbiBvZiBvbmUgb2YgdGhlIGhpZ2hlc3QtcmVnYXJkZWQgZ2FtZXMgZXZlciBpcyBpbmNyZWRpYmx5IGV4Y2l0aW5nLiBBZnRlciBnZXR0aW5nIGEgbG9vayBhdCB0aGUgcmV2ZWFsIGZvb3RhZ2UsIGl04oCZcyBhIGdvb2QgdGhpbmcgT2NhcmluYSBvZiBUaW1lIGRyb3BzIHNvIHNvb24g4oCTIEnigJltIG5vdCBzdXJlIEnigJlkIGJlIGFibGUgdG8gd2FpdCBtdWNoIGxvbmdlci4='}
+[02:49:55.879869] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:56.812767] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:58.687454] Receieved file_list from ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '97c4523f', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:49:59.577472] Receieved file_list from ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': 'b2103617', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:50:00.397248] Sent file_list to ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': '99cace08', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:50:00.406186] Sent file_list to ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': '99cace08', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:50:00.413749] Sent file_list to ('192.168.56.1', 6004): {'type': 'file_list', 'node_id': '99cace08', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:50:00.423757] Sent file_list to ('192.168.56.1', 6003): {'type': 'file_list', 'node_id': '99cace08', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:50:05.903612] Receieved file_list from ('192.168.56.1', 6001): {'type': 'file_list', 'node_id': 'a8975c90', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
+[02:50:06.866619] Receieved file_list from ('192.168.56.1', 6002): {'type': 'file_list', 'node_id': 'd708dc11', 'files': ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']}
