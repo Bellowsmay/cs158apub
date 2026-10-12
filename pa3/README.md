@@ -1,5 +1,10 @@
 # PA2: P2P File Share
 
+## Contributions:
+UDP Layer - Luan Nguyen
+TCP Layer - Sai Wong
+File Transfer - Alex Lim
+
 ## How to Run
 
 ```
@@ -90,3 +95,247 @@ Used to explain why file could not be sent
   "file_name": "Project Hail Mary.txt"
 }
 ```
+-------------------------------Execution Example of Agent5.py-----------------------------------------
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub> cd pa3
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub\pa3> python agent5.py 6005 
+My id=a653c127, tcp_port=6005
+[tcp] listening on TCP 6005
+
+[listener] listening on UDP 54321
+
+[listener] ignored my own broadcast
+[discovery] broadcasting peer_request
+
+[discovery] got peer_ack from ('192.168.56.1', 6001), id=26ceb384
+[peers] added 26ceb384
+[tcp] connected to 26ceb384 at ('192.168.56.1', 6001)
+[discovery] got peer_ack from ('192.168.56.1', 54322), id=9a01648d
+[peers] added 9a01648d
+[tcp] connected to 9a01648d at ('192.168.56.1', 54322)
+[discovery] got peer_ack from ('192.168.56.1', 6004), id=1ae26e17
+[peers] added 1ae26e17
+[tcp] connected to 1ae26e17 at ('192.168.56.1', 6004)
+[discovery] got peer_ack from ('192.168.56.1', 6003), id=2ae06e2d
+[peers] added 2ae06e2d
+[tcp] connected to 2ae06e2d at ('192.168.56.1', 6003)
+[discovery] no peer_acks received, done waiting
+[file list] Available files from 26ceb384: ['End Poem.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 26ceb384? (Enter 'none' for none)-------------
+End Poem.txt
+[file list] Available files from 9a01648d: ['Project Hail Mary.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 9a01648d? (Enter 'none' for none)-------------
+[Transfer] End Poem.txt to shared folder
+Project Hail Mary.txt
+[file list] Available files from 1ae26e17: ['Ocarina.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 1ae26e17? (Enter 'none' for none)-------------
+[Transfer] Project Hail Mary.txt to shared folder
+Ocarina.txt
+[file list] Available files from 2ae06e2d: ['Nothing Gold Can Stay.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 2ae06e2d? (Enter 'none' for none)-------------
+[Transfer] Ocarina.txt to shared folder
+Nothing Gold Can Stay.txt
+[Transfer] Nothing Gold Can Stay.txt to shared folder
+
+
+-------------------------------Execution Example of Agent4.py-----------------------------------------
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub> cd pa3
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub\pa3> python agent4.py 6004 
+My id=1ae26e17, tcp_port=6004
+[tcp] listening on TCP 6004
+
+[listener] listening on UDP 54321
+
+[listener] ignored my own broadcast
+[discovery] broadcasting peer_request
+
+[discovery] got peer_ack from ('192.168.56.1', 54322), id=9a01648d
+[peers] added 9a01648d
+[tcp] connected to 9a01648d at ('192.168.56.1', 54322)
+[discovery] got peer_ack from ('192.168.56.1', 6003), id=2ae06e2d
+[peers] added 2ae06e2d
+[tcp] connected to 2ae06e2d at ('192.168.56.1', 6003)
+[discovery] got peer_ack from ('192.168.56.1', 6001), id=26ceb384
+[peers] added 26ceb384
+[tcp] connected to 26ceb384 at ('192.168.56.1', 6001)
+[listener] got peer_request from ('192.168.56.1', 64304), id=a653c127
+[listener] sent peer_ack to ('192.168.56.1', 64304), node_id=1ae26e17
+[peers] added a653c127
+[tcp] accepted a653c127 from ('192.168.56.1', 59538)
+[discovery] no peer_acks received, done waiting
+[file list] Available files from 9a01648d: ['Project Hail Mary.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 9a01648d? (Enter 'none' for none)-------------
+Project Hail Mary.txt
+[file list] Available files from 2ae06e2d: ['Nothing Gold Can Stay.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 2ae06e2d? (Enter 'none' for none)-------------
+[Transfer] Project Hail Mary.txt to shared folder
+Nothing Gold Can Stay.txt
+[file list] Available files from 26ceb384: ['End Poem.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 26ceb384? (Enter 'none' for none)-------------
+[Transfer] Nothing Gold Can Stay.txt to shared folder
+End Poem.txt
+[file list] Available files from a653c127: ['End Poem.txt', 'PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM a653c127? (Enter 'none' for none)-------------
+[Transfer] End Poem.txt to shared folder
+PA3 Overview.txt
+[Transfer] PA3 Overview.txt to shared folder
+[peers] removed a653c127
+
+
+-------------------------------Execution Example of Agent3.py-----------------------------------------
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub> cd pa3
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub\pa3> python agent3.py 6003 
+My id=2ae06e2d, tcp_port=6003
+[tcp] listening on TCP 6003
+
+[listener] listening on UDP 54321
+
+[listener] ignored my own broadcast
+[discovery] broadcasting peer_request
+
+[discovery] got peer_ack from ('192.168.56.1', 54322), id=9a01648d
+[peers] added 9a01648d
+[tcp] connected to 9a01648d at ('192.168.56.1', 54322)
+[discovery] got peer_ack from ('192.168.56.1', 6001), id=26ceb384
+[peers] added 26ceb384
+[tcp] connected to 26ceb384 at ('192.168.56.1', 6001)
+[listener] got peer_request from ('192.168.56.1', 64303), id=1ae26e17
+[listener] sent peer_ack to ('192.168.56.1', 64303), node_id=2ae06e2d
+[peers] added 1ae26e17
+[tcp] accepted 1ae26e17 from ('192.168.56.1', 59527)
+[discovery] no peer_acks received, done waiting
+[file list] Available files from 9a01648d: ['Project Hail Mary.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 9a01648d? (Enter 'none' for none)-------------
+[listener] got peer_request from ('192.168.56.1', 64304), id=a653c127
+[listener] sent peer_ack to ('192.168.56.1', 64304), node_id=2ae06e2d
+[peers] added a653c127
+[tcp] accepted a653c127 from ('192.168.56.1', 59539)
+Project Hail Mary.txt
+[file list] Available files from 26ceb384: ['End Poem.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 26ceb384? (Enter 'none' for none)-------------
+[Transfer] Project Hail Mary.txt to shared folder
+End Poem.txt
+[file list] Available files from 1ae26e17: ['End Poem.txt', 'Ocarina.txt', 'PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 1ae26e17? (Enter 'none' for none)-------------
+[Transfer] End Poem.txt to shared folder
+Ocarina.txt
+[file list] Available files from 1ae26e17: ['PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 1ae26e17? (Enter 'none' for none)-------------
+[Transfer] Ocarina.txt to shared folder
+PA3 Overview.txt
+[file list] Available files from a653c127: ['PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM a653c127? (Enter 'none' for none)-------------
+[Transfer] PA3 Overview.txt to shared folder
+PA3 Overview.txt
+[Transfer] Skipped PA3 Overview.txt. Already exists in downloads
+[peers] removed a653c127
+
+[peers] removed 1ae26e17
+
+
+-------------------------------Execution Example of Agent2.py-----------------------------------------
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub> cd pa3
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub\pa3> python agent2.py 54322
+My id=9a01648d, tcp_port=54322
+[tcp] listening on TCP 54322
+
+[listener] listening on UDP 54321
+
+[discovery] broadcasting peer_request
+
+[listener] ignored my own broadcast
+[discovery] got peer_ack from ('192.168.56.1', 6001), id=26ceb384
+[peers] added 26ceb384
+[tcp] connected to 26ceb384 at ('192.168.56.1', 6001)
+[listener] got peer_request from ('192.168.56.1', 63864), id=2ae06e2d
+[listener] sent peer_ack to ('192.168.56.1', 63864), node_id=9a01648d
+[peers] added 2ae06e2d
+[tcp] accepted 2ae06e2d from ('192.168.56.1', 59499)
+[discovery] no peer_acks received, done waiting
+[file list] Available files from 26ceb384: ['End Poem.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 26ceb384? (Enter 'none' for none)-------------
+[listener] got peer_request from ('192.168.56.1', 64303), id=1ae26e17
+[listener] sent peer_ack to ('192.168.56.1', 64303), node_id=9a01648d
+[peers] added 1ae26e17
+[tcp] accepted 1ae26e17 from ('192.168.56.1', 59526)
+[listener] got peer_request from ('192.168.56.1', 64304), id=a653c127
+[listener] sent peer_ack to ('192.168.56.1', 64304), node_id=9a01648d
+[peers] added a653c127
+[tcp] accepted a653c127 from ('192.168.56.1', 59537)
+End Poem.txt
+[file list] Available files from 2ae06e2d: ['End Poem.txt', 'Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 2ae06e2d? (Enter 'none' for none)-------------
+[Transfer] End Poem.txt to shared folder
+Nothing Gold Can Stay.txt
+[file list] Available files from 2ae06e2d: ['Ocarina.txt', 'PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 2ae06e2d? (Enter 'none' for none)-------------
+[Transfer] Nothing Gold Can Stay.txt to shared folder
+Ocarina.txt
+[file list] Available files from 1ae26e17: ['Ocarina.txt', 'PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 1ae26e17? (Enter 'none' for none)-------------
+[Transfer] Ocarina.txt to shared folder
+PA3 Overview.txt
+[file list] Available files from a653c127: ['PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM a653c127? (Enter 'none' for none)-------------
+[Transfer] PA3 Overview.txt to shared folder
+none
+[peers] removed a653c127
+
+[peers] removed 1ae26e17
+
+[peers] removed 2ae06e2d
+
+-------------------------------Execution Example of Agent.py-----------------------------------------
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub> cd pa3                
+PS C:\Users\alima\OneDrive\Documents\GitHub\cs158apub\pa3> python agent.py 6001  
+My id=26ceb384, tcp_port=6001
+[tcp] listening on TCP 6001
+
+[listener] listening on UDP 54321
+
+[listener] ignored my own broadcast
+[discovery] broadcasting peer_request
+
+[listener] got peer_request from ('192.168.56.1', 63863), id=9a01648d
+[listener] sent peer_ack to ('192.168.56.1', 63863), node_id=26ceb384
+[peers] added 9a01648d
+[tcp] accepted 9a01648d from ('192.168.56.1', 59478)
+[listener] got peer_request from ('192.168.56.1', 63864), id=2ae06e2d
+[listener] sent peer_ack to ('192.168.56.1', 63864), node_id=26ceb384
+[peers] added 2ae06e2d
+[tcp] accepted 2ae06e2d from ('192.168.56.1', 59500)
+[discovery] no peer_acks received, done waiting
+[file list] Available files from 9a01648d: ['Project Hail Mary.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 9a01648d? (Enter 'none' for none)-------------
+[listener] got peer_request from ('192.168.56.1', 64303), id=1ae26e17
+[listener] sent peer_ack to ('192.168.56.1', 64303), node_id=26ceb384
+[peers] added 1ae26e17
+[tcp] accepted 1ae26e17 from ('192.168.56.1', 59529)
+[listener] got peer_request from ('192.168.56.1', 64304), id=a653c127
+[listener] sent peer_ack to ('192.168.56.1', 64304), node_id=26ceb384
+[peers] added a653c127
+[tcp] accepted a653c127 from ('192.168.56.1', 59536)
+Project Hail Mary.txt
+[file list] Available files from 2ae06e2d: ['Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt', 'Project Hail Mary.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 2ae06e2d? (Enter 'none' for none)-------------
+[Transfer] Project Hail Mary.txt to shared folder
+Nothing Gold Can Stay.txt
+[file list] Available files from 9a01648d: ['Nothing Gold Can Stay.txt', 'Ocarina.txt', 'PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 9a01648d? (Enter 'none' for none)-------------
+[Transfer] Nothing Gold Can Stay.txt to shared folder
+Ocarina.txt
+[file list] Available files from 2ae06e2d: ['Ocarina.txt', 'PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 2ae06e2d? (Enter 'none' for none)-------------
+[Transfer] Ocarina.txt to shared folder
+PA3 Overview.txt
+[file list] Available files from 1ae26e17: ['PA3 Overview.txt']
+-------------WHICH FILE WOULD YOU LIKE TO REQUEST FROM 1ae26e17? (Enter 'none' for none)-------------
+[Transfer] PA3 Overview.txt to shared folder
+PA3 Overview.txt
+[Transfer] Skipped PA3 Overview.txt. Already exists in downloads
+[peers] removed a653c127
+
+[peers] removed 1ae26e17
+
+[peers] removed 2ae06e2d
+
+[peers] removed 9a01648d
